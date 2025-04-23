@@ -59,27 +59,77 @@
         padding: 14px 32px;
       }
     }
+    /* Popup styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 1000;
+      width: 90%;
+      max-width: 400px;
+    }
+    .popup h2 {
+      margin-top: 0;
+    }
+    .popup a {
+      color: #ffb6c1;
+      text-decoration: none;
+    }
+    .popup a:hover {
+      text-decoration: underline;
+    }
+    .popup-close {
+      margin-top: 20px;
+      cursor: pointer;
+      color: white;
+      background: #ff4d4d;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="navbar">
     <a href="#reel">Reel</a>
     <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="#" onclick="togglePopup()">Contact</a>
   </div>
 
   <div class="overlay">
     <a href="https://instagram.com/nb.fpv" target="_blank">Follow on Instagram: @nb.fpv</a>
   </div>
 
+  <div class="popup" id="contactPopup">
+    <h2>Contact NBFPV</h2>
+    <p>Email: <a href="mailto:info@nbfpv.com">info@nbfpv.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/nb.fpv" target="_blank">@nb.fpv</a></p>
+    <button class="popup-close" onclick="togglePopup()">Close</button>
+  </div>
+
   <script>
     let toggled = false;
-    document.body.addEventListener("click", () => {
-      document.body.style.backgroundImage = toggled
-        ? "url('logo.png')"
-        : "url('alt-logo.png')";
-      toggled = !toggled;
+    document.body.addEventListener("click", (e) => {
+      if (!e.target.closest('.popup') && !e.target.closest('.navbar a[href='#']')) {
+        document.body.style.backgroundImage = toggled
+          ? "url('logo.png')"
+          : "url('alt-logo.png')";
+        toggled = !toggled;
+      }
     });
+
+    function togglePopup() {
+      const popup = document.getElementById("contactPopup");
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    }
   </script>
 </body>
 </html>
