@@ -139,13 +139,14 @@
     .blur-overlay.active {
       display: block;
     }
-    
     .popup, .reel-popup {
       opacity: 0;
-      transform: scale(0.9);
+      transform: scale(0.95);
       transition: opacity 0.3s ease, transform 0.3s ease;
+      display: none;
     }
     .popup.show, .reel-popup.show {
+      display: block;
       opacity: 1;
       transform: scale(1);
     }
@@ -198,15 +199,15 @@
     function togglePopup() {
       const popup = document.getElementById("contactPopup");
       const blur = document.getElementById("blurOverlay");
-      const isOpen = popup.style.display === "block";
+      const isOpen = popup.classList.contains("show");
+
       if (!isOpen) {
-        popup.style.display = "block";
-        requestAnimationFrame(() => popup.classList.add("show"));
+        popup.classList.add("show");
+        blur.classList.add("active");
       } else {
         popup.classList.remove("show");
-        setTimeout(() => popup.style.display = "none", 300);
+        blur.classList.remove("active");
       }
-      blur.classList.toggle("active", !isOpen);
     }
       const popup = document.getElementById("contactPopup");
       popup.style.display = popup.style.display === "block" ? "none" : "block";
@@ -216,15 +217,15 @@
     function toggleReel() {
       const reel = document.getElementById("reelPopup");
       const blur = document.getElementById("blurOverlay");
-      const isOpen = reel.style.display === "block";
+      const isOpen = reel.classList.contains("show");
+
       if (!isOpen) {
-        reel.style.display = "block";
-        requestAnimationFrame(() => reel.classList.add("show"));
+        reel.classList.add("show");
+        blur.classList.add("active");
       } else {
         reel.classList.remove("show");
-        setTimeout(() => reel.style.display = "none", 300);
+        blur.classList.remove("active");
       }
-      blur.classList.toggle("active", !isOpen);
     }
       const reel = document.getElementById("reelPopup");
       reel.style.display = reel.style.display === "block" ? "none" : "block";
