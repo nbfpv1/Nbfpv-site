@@ -30,6 +30,7 @@
       background-color: rgba(0, 0, 0, 0.5);
       padding: 8px 12px;
       border-radius: 4px;
+      cursor: pointer;
     }
     .navbar a:hover {
       color: #ffb6c1;
@@ -59,14 +60,13 @@
         padding: 14px 32px;
       }
     }
-    /* Popup styles */
     .popup {
       display: none;
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.95);
       color: white;
       padding: 40px 20px;
       border-radius: 10px;
@@ -101,7 +101,7 @@
   <div class="navbar">
     <a href="#reel">Reel</a>
     <a href="#about">About</a>
-    <a href="#" onclick="togglePopup()">Contact</a>
+    <a onclick="togglePopup()">Contact</a>
   </div>
 
   <div class="overlay">
@@ -118,7 +118,12 @@
   <script>
     let toggled = false;
     document.body.addEventListener("click", (e) => {
-      if (!e.target.closest('.popup') && !e.target.closest('.navbar a[href='#']')) {
+      const popup = document.getElementById("contactPopup");
+      const isNavbar = e.target.closest('.navbar');
+      const isPopup = e.target.closest('.popup');
+      const isContactButton = e.target.innerText === "Contact";
+
+      if (!isNavbar && !isPopup) {
         document.body.style.backgroundImage = toggled
           ? "url('logo.png')"
           : "url('alt-logo.png')";
