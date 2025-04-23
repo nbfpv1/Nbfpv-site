@@ -71,18 +71,12 @@
       background: rgba(0, 0, 0, 0.4);
       z-index: 1000;
     }
-    .blur-overlay.active {
-      display: block;
-    }
     .popup, .reel-popup {
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.3s ease, transform 0.3s ease;
       display: none;
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0.95);
+      transform: translate(-50%, -50%);
       background: rgba(0, 0, 0, 0.95);
       color: white;
       padding: 40px 20px;
@@ -94,8 +88,6 @@
     }
     .popup.show, .reel-popup.show {
       display: block;
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
     }
     .popup-close, .reel-close {
       margin-top: 20px;
@@ -116,8 +108,8 @@
 </head>
 <body>
   <div class="navbar">
-    <a onclick="toggleReel()">Reel</a>
-    <a onclick="togglePopup()">Contact</a>
+    <a onclick="showPopup('reel')">Reel</a>
+    <a onclick="showPopup('contact')">Contact</a>
   </div>
 
   <div class="overlay">
@@ -132,23 +124,25 @@
             title="NBFPV Reel"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
-    <button class="reel-close" onclick="toggleReel()">Close</button>
+    <button class="reel-close" onclick="closePopups()">Close</button>
   </div>
 
   <div class="popup" id="contactPopup">
     <h2>Contact NBFPV</h2>
     <p>Email: <a href="mailto:info@nbfpv.com">info@nbfpv.com</a></p>
     <p>Instagram: <a href="https://instagram.com/nb.fpv" target="_blank">@nb.fpv</a></p>
-    <button class="popup-close" onclick="togglePopup()">Close</button>
+    <button class="popup-close" onclick="closePopups()">Close</button>
   </div>
 
   <script>
     let toggled = false;
+
     document.body.addEventListener("click", (e) => {
       const isPopup = e.target.closest('.popup') || e.target.closest('.reel-popup');
       const isNav = e.target.closest('.navbar');
       const isBtn = e.target.classList.contains('popup-close') || e.target.classList.contains('reel-close');
       if (!isPopup && !isNav && !isBtn) {
+        closePopups();  // Close popups on background click
         document.body.style.backgroundImage = toggled
           ? "url('logo.png')"
           : "url('alt-logo.png')";
@@ -156,30 +150,20 @@
       }
     });
 
-    function toggleReel() {
-      const popup = document.getElementById("reelPopup");
-      const blur = document.getElementById("blurOverlay");
-      const isOpen = popup.classList.contains("show");
-      if (!isOpen) {
-        popup.classList.add("show");
-        blur.classList.add("active");
-      } else {
-        popup.classList.remove("show");
-        blur.classList.remove("active");
-      }
+    function closePopups() {
+      document.getElementById("contactPopup").classList.remove("show");
+      document.getElementById("reelPopup").classList.remove("show");
+      document.getElementById("blurOverlay").style.display = "none";
     }
 
-    function togglePopup() {
-      const popup = document.getElementById("contactPopup");
-      const blur = document.getElementById("blurOverlay");
-      const isOpen = popup.classList.contains("show");
-      if (!isOpen) {
-        popup.classList.add("show");
-        blur.classList.add("active");
-      } else {
-        popup.classList.remove("show");
-        blur.classList.remove("active");
+    function showPopup(type) {
+      closePopups();
+      if (type === "reel") {
+        document.getElementById("reelPopup").classList.add("show");
+      } else if (type === "contact") {
+        document.getElementById("contactPopup").classList.add("show");
       }
+      document.getElementById("blurOverlay").style.display = "block";
     }
   </script>
 </body>
