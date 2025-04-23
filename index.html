@@ -126,14 +126,28 @@
       cursor: pointer;
     }
   
-    body.blur::before {
-      content: '';
+    .blur-overlay {
+      display: none;
       position: fixed;
       top: 0; left: 0;
-      width: 100%; height: 100%;
+      width: 100vw;
+      height: 100vh;
       backdrop-filter: blur(8px);
       background: rgba(0, 0, 0, 0.4);
       z-index: 998;
+    }
+    .blur-overlay.active {
+      display: block;
+    }
+    
+    .popup, .reel-popup {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .popup.show, .reel-popup.show {
+      opacity: 1;
+      transform: scale(1);
     }
     </style>
 </head>
@@ -155,9 +169,10 @@
     <button class="popup-close" onclick="togglePopup()">Close</button>
   </div>
 
+  <div class="blur-overlay" id="blurOverlay"></div>
   <div class="reel-popup" id="reelPopup">
     <h2>NBFPV Reel</h2>
-    <iframe src="https://www.youtube.com/embed/eGCaEn-wlso?rel=0&modestbranding=1&showinfo=0&controls=1"
+    <iframe src="https://www.youtube.com/embed/eGCaEn-wlso"
             title="NBFPV Reel"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
@@ -179,7 +194,20 @@
       }
     });
 
+    
     function togglePopup() {
+      const popup = document.getElementById("contactPopup");
+      const blur = document.getElementById("blurOverlay");
+      const isOpen = popup.style.display === "block";
+      if (!isOpen) {
+        popup.style.display = "block";
+        requestAnimationFrame(() => popup.classList.add("show"));
+      } else {
+        popup.classList.remove("show");
+        setTimeout(() => popup.style.display = "none", 300);
+      }
+      blur.classList.toggle("active", !isOpen);
+    }
       const popup = document.getElementById("contactPopup");
       popup.style.display = popup.style.display === "block" ? "none" : "block";
     }
@@ -187,10 +215,16 @@
     
     function toggleReel() {
       const reel = document.getElementById("reelPopup");
-      const body = document.body;
+      const blur = document.getElementById("blurOverlay");
       const isOpen = reel.style.display === "block";
-      reel.style.display = isOpen ? "none" : "block";
-      body.classList.toggle("blur", !isOpen);
+      if (!isOpen) {
+        reel.style.display = "block";
+        requestAnimationFrame(() => reel.classList.add("show"));
+      } else {
+        reel.classList.remove("show");
+        setTimeout(() => reel.style.display = "none", 300);
+      }
+      blur.classList.toggle("active", !isOpen);
     }
       const reel = document.getElementById("reelPopup");
       reel.style.display = reel.style.display === "block" ? "none" : "block";
