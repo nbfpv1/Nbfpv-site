@@ -2,46 +2,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>NBFPV</title>
-    <style>
-        html, body {
-            margin: 0;
-            height: 100%;
-            background: url('logo.png') center center / contain no-repeat fixed;
-            background-color: black;
-            font-family: Arial, sans-serif;
-            transition: background-image 1s ease-in-out;
-        }
-        .overlay {
-            position: absolute;
-            bottom: 30px;
-            width: 100%;
-            text-align: center;
-        }
-        a {
-            color: white;
-            font-size: 36px;
-            font-weight: bold;
-            text-decoration: none;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px 40px;
-            border-radius: 8px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>NBFPV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: url('logo.png') center center / contain no-repeat fixed;
+      background-color: black;
+      font-family: Arial, sans-serif;
+      transition: background-image 1s ease-in-out;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 10px 20px;
+      z-index: 999;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      margin-left: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+    .navbar a:hover {
+      color: #ffb6c1;
+    }
+    .overlay {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+    }
+    .overlay a {
+      color: white;
+      font-size: 36px;
+      font-weight: bold;
+      text-decoration: none;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
-    <div class="overlay">
-        <a href="https://instagram.com/nb.fpv" target="_blank">Follow on Instagram: @nb.fpv</a>
-    </div>
-    <script>
-        let toggled = false;
-        document.body.addEventListener("click", () => {
-            document.body.style.backgroundImage = toggled
-              ? "url('logo.png')"
-              : "url('alt-logo.png')";
-            toggled = !toggled;
-        });
-    </script>
+  <div class="navbar">
+    <a href="#reel">Reel</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div class="overlay">
+    <a href="https://instagram.com/nb.fpv" target="_blank">Follow on Instagram: @nb.fpv</a>
+  </div>
+
+  <script>
+    let toggled = false;
+    document.body.addEventListener("click", () => {
+      document.body.style.backgroundImage = toggled
+        ? "url('logo.png')"
+        : "url('alt-logo.png')";
+      toggled = !toggled;
+    });
+  </script>
 </body>
 </html>
