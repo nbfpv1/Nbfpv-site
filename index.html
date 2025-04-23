@@ -5,6 +5,19 @@
   <meta charset="UTF-8">
   <title>NBFPV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="NBFPV provides cinematic FPV drone footage in the Netherlands. Stunning visuals for media, events, and real estate.">
+  <meta name="keywords" content="FPV drone Netherlands, cinematic drone footage, drone media, NBFPV, aerial photography">
+  <meta name="author" content="NBFPV">
+
+  <!-- Social Sharing -->
+  <meta property="og:title" content="NBFPV – Cinematic FPV Drone Footage">
+  <meta property="og:description" content="Cinematic FPV drone visuals for media, real estate, and events in the Netherlands.">
+  <meta property="og:image" content="https://nbfpv.com/logo.png">
+  <meta property="og:url" content="https://nbfpv.com">
+  <meta name="twitter:card" content="summary_large_image">
+
   <style>
     html, body {
       margin: 0;
@@ -32,9 +45,6 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    .navbar a:hover {
-      color: #ffb6c1;
-    }
     .overlay {
       position: absolute;
       bottom: 30px;
@@ -42,7 +52,6 @@
       text-align: center;
       padding: 0 20px;
       box-sizing: border-box;
-      z-index: 1;
     }
     .overlay a {
       display: inline-block;
@@ -136,13 +145,11 @@
 
   <script>
     let toggled = false;
-
     document.body.addEventListener("click", (e) => {
       const isPopup = e.target.closest('.popup') || e.target.closest('.reel-popup');
       const isNav = e.target.closest('.navbar');
-      const isBtn = e.target.classList.contains('popup-close') || e.target.classList.contains('reel-close');
-      if (!isPopup && !isNav && !isBtn) {
-        closePopups();  // Close popups on background click
+      if (!isPopup && !isNav) {
+        closePopups();
         document.body.style.backgroundImage = toggled
           ? "url('logo.png')"
           : "url('alt-logo.png')";
