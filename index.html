@@ -9,7 +9,7 @@
             margin: 0;
             height: 100%;
             background: url('logo.png') center center / contain no-repeat fixed;
-            background-color: black; /* Optional: fills space if logo doesn't cover all */
+            background-color: black;
             font-family: Arial, sans-serif;
         }
         .overlay {
@@ -33,5 +33,14 @@
     <div class="overlay">
         <a href="https://instagram.com/nb.fpv" target="_blank">Follow on Instagram: @nb.fpv</a>
     </div>
+    <script>
+        let toggled = false;
+        document.body.addEventListener("click", () => {
+            document.body.style.backgroundImage = toggled
+              ? "url('logo.png')"
+              : "url('alt-logo.png')";
+            toggled = !toggled;
+        });
+    </script>
 </body>
 </html>
