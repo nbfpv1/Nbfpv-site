@@ -122,6 +122,7 @@
     }
   
     .blossom {
+  z-index: -1;
       position: fixed;
       top: -50px;
       width: 24px;
@@ -204,14 +205,14 @@
   </script>
 
   <script>
-    const blossomCount = 20;
+    const blossomCount = 10;
     const emojis = ["🌸", "🌼"]; // cherry blossom + tulip for variation
     for (let i = 0; i < blossomCount; i++) {
       const blossom = document.createElement("div");
       blossom.className = "blossom";
       blossom.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       blossom.style.left = Math.random() * 100 + "vw";
-      blossom.style.animationDuration = 6 + Math.random() * 5 + "s";
+      blossom.style.animationDuration = 10 + Math.random() * 8 + "s";
       blossom.style.animationDelay = Math.random() * 5 + "s";
       document.body.appendChild(blossom);
     }
