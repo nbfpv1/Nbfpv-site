@@ -59,7 +59,7 @@
       font-size: 5vw;
       font-weight: bold;
       text-decoration: none;
-      background: rgba(0, 0, 0, 0.15);
+      background: rgba(0, 0, 0, 0.6);
       padding: 1vw 4vw;
       border-radius: 8px;
       max-width: 90%;
@@ -86,7 +86,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.15);
+      background: rgba(0, 0, 0, 0.6);
       color: white;
       padding: 40px 20px;
       border-radius: 10px;
@@ -121,33 +121,9 @@
       border: none;
     }
   
+    
     .blossom {
-      position: fixed;
-      top: -50px;
-      width: 30px;
-      height: 30px;
-      z-index: -1;
       pointer-events: none;
-    }
-    .blossom img {
-      width: 100%;
-      height: auto;
-      animation: fall linear infinite;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-      position: fixed;
-      top: -50px;
-      width: 30px;
-      height: 30px;
-      z-index: -1;
-      pointer-events: none;
-      animation: fall linear infinite;
-    }
-    .blossom img {
-      width: 100%;
-      height: auto;
     }
   z-index: -1;
       position: fixed;
@@ -160,9 +136,10 @@
       animation: fall linear infinite;
     }
 
+    
     @keyframes fall {
       0% {
-        transform: translateY(-50px) rotate(0deg);
+        transform: translateY(-60px) rotate(0deg);
         opacity: 0;
       }
       50% {
@@ -244,12 +221,21 @@
   </script>
 
   <script>
-    const blossomCount = 6;
+    const blossomCount = 10;
     const emojis = ["🌸", "🌼"]; // cherry blossom + tulip for variation
     for (let i = 0; i < blossomCount; i++) {
+      
       const blossom = document.createElement("img");
       blossom.className = "blossom";
       blossom.src = blossomImage;
+      blossom.style.position = "fixed";
+      blossom.style.top = "-50px";
+      blossom.style.left = Math.random() * 100 + "vw";
+      blossom.style.width = (20 + Math.random() * 20) + "px";
+      blossom.style.animation = "fall " + (12 + Math.random() * 8) + "s linear infinite";
+      blossom.style.zIndex = "-1";
+      document.body.appendChild(blossom);
+    
       blossom.style.left = Math.random() * 100 + "vw";
       blossom.style.animationDuration = 14 + Math.random() * 10 + "s";
       blossom.style.animationDelay = Math.random() * 5 + "s";
