@@ -4,6 +4,18 @@
 <head>
   <!-- Normalize styles and ensure better cross-browser consistency -->
   <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .site-wrapper {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -33,6 +45,18 @@
   <link rel="shortcut icon" href="favicon.png">
 
   <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .site-wrapper {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
     html, body {
       margin: 0;
       height: 100%;
@@ -194,6 +218,7 @@
   </style>
 </head>
 <body>
+  <div class="site-wrapper">
   <div class="navbar">
     <a onclick="showPopup('reel')">Reel</a>
     <a onclick="showPopup('contact')">Contact</a>
@@ -260,5 +285,6 @@
       This site requires JavaScript to function correctly. Please enable it in your browser.
     </div>
   </noscript>
+  </div>
 </body>
 </html>
