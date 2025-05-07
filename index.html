@@ -4,22 +4,6 @@
 <head>
   <!-- Normalize styles and ensure better cross-browser consistency -->
   <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .page-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-  }
-  .logo-fill {
-    flex-grow: 1;
-    min-height: 70vh;
-  }
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -49,22 +33,6 @@
   <link rel="shortcut icon" href="favicon.png">
 
   <style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .page-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-  }
-  .logo-fill {
-    flex-grow: 1;
-    min-height: 70vh;
-  }
     html, body {
       margin: 0;
       height: 100%;
@@ -120,6 +88,13 @@
       background-color: black;
       text-align: center;
       padding: 20px 0;
+      margin-top: 20px;
+      z-index: 1;
+    }
+      position: relative;
+      background-color: black;
+      text-align: center;
+      padding: 20px 0;
       margin-top: 80vh;
       z-index: 1;
     }
@@ -141,10 +116,10 @@
       z-index: 1;
     }
     .overlay a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: clamp(16px, 4vw, 28px);
+      display: inline-block;
+      
+      
+      font-size: 5vw;
       padding: 12px 28px;
 
       display: inline-block;
@@ -226,8 +201,6 @@
   </style>
 </head>
 <body>
-  <div class="page-container">
-    <div class="logo-fill"></div>
   <div class="navbar">
     <a onclick="showPopup('reel')">Reel</a>
     <a onclick="showPopup('contact')">Contact</a>
@@ -294,6 +267,5 @@
       This site requires JavaScript to function correctly. Please enable it in your browser.
     </div>
   </noscript>
-    </div>
 </body>
 </html>
