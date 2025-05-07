@@ -28,6 +28,7 @@
       transition: background-image 1s ease-in-out;
     }
     .navbar {
+      z-index: 2000;
       position: fixed;
       top: 0;
       right: 0;
@@ -164,7 +165,7 @@
 
   <script>
     let toggled = false;
-    document.body.addEventListener("click", (e) => {
+    document.addEventListener("click", (e) => {
       const isPopup = e.target.closest('.popup') || e.target.closest('.reel-popup');
       const isNav = e.target.closest('.navbar');
       if (!isPopup && !isNav) {
