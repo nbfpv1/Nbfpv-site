@@ -2,6 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Normalize styles and ensure better cross-browser consistency -->
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
   <meta charset="UTF-8">
   <title>NBFPV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +37,7 @@
       margin: 0;
       height: 100%;
       background: black url('logo.png') center center / contain no-repeat fixed;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
       transition: background-image 1s ease-in-out;
     }
     .navbar {
@@ -193,20 +205,13 @@
       document.getElementById("blurOverlay").style.display = "block";
     }
 
-    const blossomLayer = document.getElementById("blossom-layer");
-    const blossomCount = 6;
-
-    for (let i = 0; i < blossomCount; i++) {
-      const img = document.createElement("img");
-      img.src = "blossom.png";
-      img.style.position = "absolute";
-      img.style.left = Math.random() * 100 + "vw";
-      img.style.top = "-60px";
-      img.style.width = (20 + Math.random() * 20) + "px";
-      img.style.animation = "fall " + (12 + Math.random() * 8) + "s linear infinite";
-      img.style.zIndex = "-1";
-      blossomLayer.appendChild(img);
-    }
+    
   </script>
+
+  <noscript>
+    <div style="text-align: center; color: white; background: #111; padding: 1em;">
+      This site requires JavaScript to function correctly. Please enable it in your browser.
+    </div>
+  </noscript>
 </body>
 </html>
