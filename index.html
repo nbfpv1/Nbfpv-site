@@ -83,7 +83,17 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    .overlay {
+    .footer-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-color: black;
+      text-align: center;
+      padding: 12px 0;
+      z-index: 1000;
+    }
       position: absolute;
       bottom: 30px;
       width: 100%;
@@ -183,7 +193,7 @@
     <a onclick="showPopup('contact')">Contact</a>
   </div>
 
-  <div class="overlay">
+  <div class="footer-bar">
     <a href="https://instagram.com/nb.fpv" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-icon">@nb.fpv
     </a>
