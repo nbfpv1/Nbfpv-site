@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NBFPV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: black url('logo.png') center center / contain no-repeat fixed;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: black;
+      padding: 10px 20px;
+      z-index: 1000;
+    }
+    .navbar-left img {
+      height: 20px;
+    }
+    .navbar-right a {
+      color: white;
+      margin-left: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .popup, .reel-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.75);
+      padding: 30px;
+      border-radius: 10px;
+      color: white;
+      z-index: 2000;
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+    }
+    .popup.show, .reel-popup.show {
+      display: block;
+    }
+    .popup button, .reel-popup button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #ffb6c1;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .reel-popup iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-left">
+      <a href="https://instagram.com/nb.fpv" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      </a>
+    </div>
+    <div class="navbar-right">
+      <a onclick="showPopup('reel')">Reel</a>
+      <a onclick="showPopup('contact')">Contact</a>
+    </div>
+  </div>
+
+  <div class="reel-popup" id="reelPopup">
+    <h2>NBFPV Reel</h2>
+    <iframe src="https://www.youtube.com/embed/k8XfBekYcZ8?vq=hd1080" allowfullscreen></iframe>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <div class="popup" id="contactPopup">
+    <h2>Contact NBFPV</h2>
+    <p>Email: <a href="mailto:info@nbfpv.com" style="color: #ffb6c1;">info@nbfpv.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/nb.fpv" target="_blank" style="color: #ffb6c1;">@nb.fpv</a></p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    function showPopup(type) {
+      closePopup();
+      if (type === 'reel') {
+        document.getElementById('reelPopup').classList.add('show');
+      } else if (type === 'contact') {
+        document.getElementById('contactPopup').classList.add('show');
+      }
+    }
+
+    function closePopup() {
+      document.getElementById('reelPopup').classList.remove('show');
+      document.getElementById('contactPopup').classList.remove('show');
+    }
+  </script>
+</body>
+</html>
