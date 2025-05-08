@@ -8,6 +8,22 @@
   <link rel="shortcut icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .navbar-left, .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .navbar-right {
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
     html, body {
       margin: 0;
       height: 100%;
@@ -96,7 +112,13 @@
   </style>
 </head>
 <body>
-  <div class="navbar">
+<div class="navbar">
+  <div class="navbar-left">
+    <a href="https://instagram.com/nb.fpv" target="_blank" title="Instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-icon">
+    </a>
+  </div>
+  <div class="navbar-right">
     <a href="https://instagram.com/nb.fpv" target="_blank" title="Instagram">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="insta-icon">
     </a>
