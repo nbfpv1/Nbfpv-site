@@ -30,12 +30,12 @@
       height: 20px;
     }
     .navbar-right a {
-      flex-shrink: 0;
       color: white;
       margin-left: 15px;
       font-weight: bold;
       text-decoration: none;
       cursor: pointer;
+      flex-shrink: 0;
     }
     .popup, .reel-popup {
       display: none;
@@ -87,7 +87,7 @@
 
   <div class="reel-popup" id="reelPopup">
     <h2>NBFPV Reel</h2>
-    <iframe src="https://www.youtube.com/embed/k8XfBekYcZ8?vq=hd1080" allowfullscreen></iframe>
+    <iframe id="reelIframe" src="https://www.youtube.com/embed/k8XfBekYcZ8?vq=hd1080" allowfullscreen></iframe>
     <button onclick="closePopup()">Close</button>
   </div>
 
@@ -103,6 +103,7 @@
       closePopup();
       if (type === 'reel') {
         document.getElementById('reelPopup').classList.add('show');
+        document.getElementById('reelIframe').src = "https://www.youtube.com/embed/k8XfBekYcZ8?vq=hd1080";
       } else if (type === 'contact') {
         document.getElementById('contactPopup').classList.add('show');
       }
@@ -111,6 +112,7 @@
     function closePopup() {
       document.getElementById('reelPopup').classList.remove('show');
       document.getElementById('contactPopup').classList.remove('show');
+      document.getElementById('reelIframe').src = "";
     }
   </script>
 </body>
